@@ -1,17 +1,15 @@
-import { Router } from "express";
-//import { StatusCodes } from 'http-status-codes';
+import { Router, Request, Response } from "express";
+import { CidadesController } from './../controllers';
 
 const router = Router();
 
-router.get('/', (req, res) => {
+router.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
+router.post(
+    '/cidades', 
+    CidadesController.createValidation,
+    CidadesController.create);
 
-router.post('/teste/:id', (req, res) => {
-    console.log(req.body);
-    res.json(req.body);
-});
-  
-
-export  {router};
+export { router };
