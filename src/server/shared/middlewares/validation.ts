@@ -1,4 +1,4 @@
-import { query, RequestHandler } from 'express';
+import { RequestHandler } from 'express';
 import { Schema, ValidationError } from 'yup';
 import { StatusCodes } from 'http-status-codes';
 
@@ -45,11 +45,12 @@ export const validation: TValidation = (getAllSchemes) =>  async (req,res,next) 
         }
     );
     
-    if(Object.entries(errorsResult).length === 0){
+    if(Object.values(errorsResult).every(error => Object.keys(error).length === 0)){
         next();
         return;
     }
     else {
+        console.log(Object.entries(errorsResult).length);
         res.status(StatusCodes.BAD_REQUEST).json({errors: errorsResult});
         return;
     }

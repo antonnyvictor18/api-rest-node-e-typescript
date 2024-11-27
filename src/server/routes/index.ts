@@ -12,4 +12,9 @@ router.post(
     CidadesController.createValidation,
     CidadesController.create);
 
+router.get(
+    '/cidades', 
+    CidadesController.getAllValidation,
+    CidadesController.getAll);
+
 export { router };

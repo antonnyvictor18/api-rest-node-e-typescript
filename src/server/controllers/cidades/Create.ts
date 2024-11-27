@@ -11,6 +11,7 @@ interface ICidade {
 interface IFilter {
     filter?: string;
 }
+
 export const createValidation = validation((getScheme) => ({
     body: getScheme<ICidade>(yup.object().shape({
         nome: yup.string().required().min(3),
@@ -23,9 +24,7 @@ export const createValidation = validation((getScheme) => ({
     headers: getScheme<{}>(yup.object().shape({}))
 }));
 
-
-
 export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
     console.log(req.body);
-    res.status(StatusCodes.CREATED).send('Created!');
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Not implemented');
 };
