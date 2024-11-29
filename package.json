@@ -6,10 +6,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "ts-node-dev src/index.ts",
+    "start": "node ./build/index.js",
     "test": "jest",
     "production": "node ./build/index.js",
-    "postinstall": "tsc"
+    "postinstall": "tsc",
+    "build": "tsc"
   },
   "dependencies": {
     "@types/jest": "^29.5.14",
